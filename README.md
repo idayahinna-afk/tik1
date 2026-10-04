@@ -10,14 +10,34 @@ SMA Negeri 11 Pinrang, Tahun Pelajaran 2026/2027.
 | Bagian | Jumlah |
 |---|---|
 | Unit pembelajaran | 15 (4 di kelas X, 5 di kelas XI, 6 di kelas XII) |
-| Slide | 307 |
+| Pertemuan | 104 |
+| Slide | 586 |
 | Simulasi interaktif | 20 |
 | LKPD lengkap dengan tabel kerja | 44 |
 | Soal pilihan ganda berkunci | 115 |
-| Diagram SVG | 35 |
+| Diagram SVG | 37 |
 
-Setiap unit punya lima tab: **Slide**, **Simulasi**, **LKPD**, **Kuis**, dan **Modul ajar**
-(identifikasi, desain pembelajaran, pengalaman belajar, asesmen, rubrik, refleksi).
+## Susunan per pertemuan
+
+Isi setiap unit dipecah menurut pertemuannya, mengikuti peta pertemuan pada modul
+ajar. Membuka sebuah unit berarti membuka rel pertemuan: satu petak untuk tiap
+pertemuan, lengkap dengan topik, alokasi JP, jumlah slide, simulasi, dan nomor LKPD-nya.
+
+Di dalam satu pertemuan tersedia:
+
+- **kepala pertemuan** berisi tiga gerak Pembelajaran Mendalam untuk pertemuan itu —
+  memahami, mengaplikasi, merefleksi — beserta rencana pelaksanaan beserta pembagian
+  menitnya bila pertemuan tersebut punya skenario terperinci;
+- **Slide** khusus pertemuan itu, dibuka dengan slide judul pertemuan dan slide alur,
+  ditutup dengan slide tugas;
+- **Simulasi** yang dipakai pada pertemuan itu saja;
+- **LKPD** yang dikerjakan pada pertemuan itu saja.
+
+Tombol lanjut menuntun urutannya sendiri: slide terakhir membuka simulasi, simulasi
+membuka LKPD, LKPD membuka pertemuan berikutnya, dan pertemuan terakhir membuka kuis.
+
+Di tingkat unit tetap tersedia tab **Kuis** dan **Modul ajar** (identifikasi, desain
+pembelajaran, pengalaman belajar, asesmen, rubrik, refleksi).
 
 ## Cara memasang di GitHub Pages
 
@@ -64,7 +84,7 @@ Penyimpanan dapat dilihat, diunduh ulang, atau dihapus lewat tombol unduh di kan
 
 | Tombol | Fungsi |
 |---|---|
-| `←` `→` | Pindah slide |
+| `←` `→` | Pindah slide, dan menyeberang ke pertemuan sebelah di ujungnya |
 | `Spasi` | Slide berikutnya |
 | `F` | Mode presenter layar penuh |
 | `Esc` | Keluar dari mode presenter |
