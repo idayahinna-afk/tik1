@@ -37,6 +37,9 @@
   --salah:#A83A2C;
   --benar-l:#DFF0E6;
   --salah-l:#F8E2DE;
+  --balik:#0A3A41;      /* bidang terbalik untuk slide pembuka */
+  --balik-2:#0D4A53;
+  --balik-t:#F3F8F6;
 
   --r:3px;              /* sudut petak: hampir siku, bukan kartu SaaS */
   --r-lg:6px;
@@ -51,6 +54,7 @@
   color-scheme:light;
 }
 :root[data-theme="gelap"]{
+  --balik:#07262B; --balik-2:#0A3238; --balik-t:#E8F2F0;
   --surut:#0B1514; --petak:#132120; --petak-2:#1A2B29;
   --payau:#DCE8E4; --laut:#58C3CE; --laut-l:#16343A;
   --gabah:#E3A845; --gabah-l:#3A2E16;
@@ -60,6 +64,7 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="terang"]){
+    --balik:#07262B; --balik-2:#0A3238; --balik-t:#E8F2F0;
     --surut:#0B1514; --petak:#132120; --petak-2:#1A2B29;
     --payau:#DCE8E4; --laut:#58C3CE; --laut-l:#16343A;
     --gabah:#E3A845; --gabah-l:#3A2E16;
@@ -315,23 +320,112 @@ hr{border:0; border-top:1px solid var(--garis); margin:1.4rem 0}
 .stage th{background:var(--payau); color:var(--petak); font-weight:700; text-align:left; padding:8px 11px; font-size:.92em}
 .stage td{border-bottom:1px solid var(--garis); padding:8px 11px; vertical-align:top}
 .stage tr:nth-child(even) td{background:var(--petak-2)}
-.slide-n{position:absolute; top:12px; right:16px; font-family:var(--f-mono); font-size:11.5px; color:var(--sedimen)}
+.slide-n{position:absolute; top:16px; right:18px; font-family:var(--f-mono); font-size:11.5px; color:var(--sedimen); opacity:.8}
+.slide-body{width:100%}
+
+/* pita petak di tepi atas panggung: posisi slide dalam pertemuan ini */
+.frule{position:absolute; top:0; left:0; right:0; height:4px; display:flex; gap:2px; padding:0 2px;
+  border-radius:var(--r-lg) var(--r-lg) 0 0; overflow:hidden}
+.frule i{flex:1; background:var(--garis); opacity:.5}
+.frule i.done{background:var(--laut); opacity:.55}
+.frule i.now{background:var(--gabah); opacity:1}
+.slide-ctx{position:absolute; top:15px; left:18px; font-size:11.5px; font-weight:600;
+  color:var(--sedimen); opacity:.8; max-width:52%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+/* ------------------------------------------------- slide pembuka terbalik */
+.k-cover,.k-pcover{background:var(--balik); border-color:var(--balik); color:var(--balik-t)}
+.k-cover .slide-ctx,.k-pcover .slide-ctx,.k-cover .slide-n,.k-pcover .slide-n{color:var(--balik-t); opacity:.55}
+.k-cover .frule i,.k-pcover .frule i{background:var(--balik-t); opacity:.18}
+.k-cover .frule i.done,.k-pcover .frule i.done{opacity:.4}
+.k-cover .frule i.now,.k-pcover .frule i.now{background:var(--gabah); opacity:1}
+.k-figure,.k-photo{background:var(--petak-2)}
 
 .cover{text-align:left; gap:0}
-.cover .ck{font-size:13px; color:var(--sedimen); font-weight:600; margin-bottom:14px}
-.cover h2{font-size:clamp(30px,5.4vw,58px); max-width:18ch;
+.cover .ck{font-size:13px; font-weight:600; margin-bottom:14px; color:var(--balik-t); opacity:.7}
+.cover h2{font-size:clamp(30px,5.4vw,58px); max-width:18ch; color:var(--balik-t);
   font-variation-settings:'SOFT' 26,'WONK' 1,'opsz' 60; margin-bottom:0}
-.cover .cmeta{margin-top:22px; display:flex; gap:22px; flex-wrap:wrap; font-size:13.5px; color:var(--sedimen)}
-.cover .cmeta b{display:block; font-family:var(--f-disp); font-size:21px; color:var(--payau); font-weight:700}
+.cover h2::after{display:none}
+.cover .cfield{display:flex; gap:3px; margin:26px 0 4px; max-width:420px; height:16px}
+.cover .cfield i{flex:1; background:var(--balik-t); opacity:.22; border-radius:1px}
+.cover .cfield i:first-child{opacity:.6; background:var(--gabah)}
+.cover .cmeta{margin-top:18px; display:flex; gap:26px; flex-wrap:wrap; font-size:13.5px;
+  color:var(--balik-t); opacity:.78}
+.cover .cmeta b{display:block; font-family:var(--f-disp); font-size:22px; color:var(--gabah); font-weight:700; opacity:1}
+.cover .celem{font-weight:600; line-height:1.4; align-self:flex-start; padding-left:22px;
+  border-left:1px solid rgba(243,248,246,.22)}
+.cover .celem span{display:block; font-weight:400; opacity:.75; margin-top:3px}
+
+/* slide judul pertemuan: angka besar sebagai unsur rupa */
+.pcov{display:flex; gap:clamp(20px,4vw,56px); align-items:center; width:100%}
+.pcov .pc-txt{flex:1}
+.pcov .pc-no{flex:0 0 auto; text-align:center; border-right:1px solid rgba(243,248,246,.22); padding-right:clamp(18px,3.5vw,44px)}
+.pcov .pc-no b{display:block; font-family:var(--f-disp); font-weight:700; line-height:.86;
+  font-size:clamp(82px,15vw,220px); color:var(--gabah); font-variation-settings:'SOFT' 20,'opsz' 110}
+.pcov .pc-no span{display:block; margin-top:10px; font-size:12px; color:var(--balik-t); opacity:.6}
+.pcov .pc-txt{min-width:0}
+.pcov .ck{font-size:12.5px; font-weight:600; color:var(--balik-t); opacity:.62; margin-bottom:10px}
+.pcov h3{font-size:clamp(24px,3.8vw,46px); font-family:var(--f-disp); font-weight:600;
+  letter-spacing:-.02em; line-height:1.1; max-width:18ch; color:var(--balik-t)}
+.pcov .pc-jp{margin-top:16px; font-size:13px; color:var(--balik-t); opacity:.7}
+.pcov .pc-jp b{font-family:var(--f-disp); font-size:20px; color:var(--gabah); opacity:1; margin-right:5px}
+
+/* --------------------------------------------------------- kartu isi slide */
+.stage:not(.k-cover):not(.k-pcover) h2::after{content:''; display:block; width:52px; height:3px; background:var(--gabah);
+  margin-top:.42em; border-radius:1px}
+.lede-s{font-size:clamp(16px,1.75vw,21px)!important; color:var(--sedimen); max-width:60ch}
+.cards{display:grid; gap:10px; margin-top:4px}
+.cards.c2{grid-template-columns:1fr 1fr}
+@container (max-width:680px){ .cards.c2{grid-template-columns:1fr} }
+.card{border:1px solid var(--garis); border-left:3px solid var(--laut); border-radius:0 var(--r) var(--r) 0;
+  padding:11px 15px; background:var(--petak)}
+.card.alt{border-left-color:var(--gabah)}
+.card .code{display:inline-block; font-family:var(--f-mono); font-size:11.5px; font-weight:600;
+  background:var(--laut-l); color:var(--payau); padding:2px 7px; border-radius:2px; margin-bottom:6px}
+.card b{display:block; font-family:var(--f-disp); font-size:clamp(15px,1.5vw,18.5px); margin-bottom:3px}
+.card p{font-size:clamp(13.5px,1.35vw,16.5px)!important; line-height:1.5; margin:0; color:var(--sedimen); max-width:none}
+
+.steps{list-style:none; margin:4px 0 0; padding:0; display:grid; gap:9px}
+.steps li{display:grid; grid-template-columns:40px 1fr; align-items:center; gap:14px;
+  border-bottom:1px solid var(--garis); padding-bottom:9px}
+.steps li:last-child{border-bottom:0}
+.steps b{font-family:var(--f-disp); font-size:clamp(22px,2.6vw,32px); color:var(--gabah); line-height:1}
+.steps span{font-size:clamp(14.5px,1.5vw,19px); line-height:1.4}
+
+.qlist{list-style:none; counter-reset:q; margin:4px 0 0; padding:0; display:grid; gap:9px}
+.qlist li{counter-increment:q; position:relative; padding:10px 14px 10px 46px;
+  background:var(--petak-2); border-radius:var(--r); font-size:clamp(14px,1.45vw,18px); line-height:1.45}
+.qlist li::before{content:counter(q); position:absolute; left:15px; top:10px;
+  font-family:var(--f-mono); font-size:12.5px; font-weight:600; color:var(--gabah)}
+
+.bobot{display:grid; gap:13px; margin-top:4px}
+.bb .bn{display:flex; justify-content:space-between; align-items:baseline; gap:12px}
+.bb .bn b{font-family:var(--f-disp); font-size:clamp(15px,1.55vw,19px)}
+.bb .bn span{font-family:var(--f-mono); font-size:13px; color:var(--gabah); font-weight:600}
+.bb .bl{height:7px; background:var(--petak-2); border-radius:1px; margin:6px 0 5px; overflow:hidden}
+.bb .bl i{display:block; height:100%; background:var(--laut)}
+.bb p{font-size:clamp(13px,1.3vw,16px)!important; color:var(--sedimen); margin:0; max-width:none}
 
 .callout{border-left:3px solid var(--gabah); background:var(--gabah-l); padding:13px 16px; border-radius:0 var(--r) var(--r) 0}
 .callout.v2{border-left-color:var(--laut); background:var(--laut-l)}
 .two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
 @container (max-width:620px){ .two{grid-template-columns:1fr} }
 .mis{border:1px solid var(--garis); border-radius:var(--r); overflow:hidden; margin-bottom:12px}
-.mis .q{background:var(--salah-l); padding:11px 14px; font-weight:600; font-size:clamp(14px,1.45vw,17px)}
-.mis .a{padding:11px 14px; font-size:clamp(13.5px,1.4vw,16px); line-height:1.55}
-.mis .a b{color:var(--benar)}
+.mis .q,.mis .a{display:grid; grid-template-columns:26px 1fr; gap:11px; padding:11px 15px; align-items:start}
+.mis .q{background:var(--salah-l); font-weight:600; font-size:clamp(14px,1.45vw,17.5px)}
+.mis .a{font-size:clamp(13.5px,1.4vw,16.5px); line-height:1.55}
+.mis .q::before,.mis .a::before{
+  content:''; width:18px; height:18px; border-radius:50%; margin-top:2px;
+  background:no-repeat center/11px 11px;
+}
+.mis .q::before{background-color:var(--salah);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 2l8 8M10 2l-8 8' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E")}
+.mis .a::before{background-color:var(--benar);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.4l2.8 2.8L10 3.2' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+
+/* satu gerak masuk saat slide berganti, tidak lebih */
+@keyframes naik{from{opacity:0; transform:translateY(9px)} to{opacity:1; transform:none}}
+.slide-body{animation:naik 190ms cubic-bezier(.2,.6,.3,1) both}
+@media (prefers-reduced-motion:reduce){ .slide-body{animation:none} }
 
 /* figure slide */
 .figslide{display:flex; flex-direction:column; gap:14px; align-items:center; justify-content:center}
@@ -377,6 +471,15 @@ hr{border:0; border-top:1px solid var(--garis); margin:1.4rem 0}
 .strip button.seen{background:var(--laut-l)}
 .strip button.now{background:var(--gabah); border-color:var(--gabah)}
 .deck-count{font-family:var(--f-mono); font-size:12.5px; color:var(--sedimen); white-space:nowrap}
+@media (max-width:560px){
+  .pcov{flex-direction:column; align-items:flex-start; gap:14px}
+  .pcov .pc-no{border-right:0; border-bottom:1px solid rgba(243,248,246,.22);
+    padding:0 0 12px; text-align:left; width:100%}
+  .pcov .pc-no b{font-size:76px}
+  .pcov .pc-no span{margin-top:4px}
+  .cover .cmeta{gap:18px}
+  .cover .celem{padding-left:0; border-left:0}
+}
 @media (max-width:620px){
   .deck-bar{flex-wrap:nowrap; gap:8px; padding:8px 9px}
   .deck-bar .strip{display:none}
@@ -385,16 +488,48 @@ hr{border:0; border-top:1px solid var(--garis); margin:1.4rem 0}
   .prail a{width:158px}
 }
 
-/* presenter */
+/* presenter — berlaku untuk slide, simulasi, LKPD, dan kuis dalam satu pertemuan */
 body.present .top,body.present .side,body.present .tabs,body.present .uhead{display:none}
 body.present .shell{grid-template-columns:1fr}
-body.present .main{padding:0}
-body.present .stage{min-height:100vh; border:0; border-radius:0; justify-content:center}
+body.present .main{padding:0 0 78px}
+body.present .stage{min-height:100vh; max-height:100vh; overflow:auto; border:0; border-radius:0;
+  justify-content:center; padding:clamp(32px,5vw,78px) clamp(32px,6vw,96px) 92px}
+body.present .frule{border-radius:0; height:5px}
+body.present .slide-ctx{top:20px; left:clamp(32px,6vw,96px); font-size:14px}
+body.present .slide-n{top:20px; right:clamp(32px,6vw,96px); font-size:14px}
 body.present .stage h2{font-size:clamp(30px,4.4vw,54px)}
+body.present .stage h2::after{width:72px; height:4px}
+body.present .shell{max-width:none}
+body.present .cover h2{font-size:clamp(38px,6.2vw,88px)}
+body.present .cover .ck,body.present .cover .cmeta{font-size:16px}
+body.present .cover .cmeta b{font-size:30px}
+body.present .pcov .pc-no span,body.present .pcov .ck,body.present .pcov .pc-jp{font-size:15px}
+body.present .pcov h3{font-size:clamp(30px,4.8vw,64px); max-width:16ch}
+body.present .pcov .pc-no b{font-size:clamp(100px,18vw,270px)}
 body.present .stage p,body.present .stage ul li{font-size:clamp(17px,1.9vw,25px)}
+body.present .card p{font-size:clamp(15px,1.5vw,20px)!important}
+body.present .card b,body.present .steps span{font-size:clamp(17px,1.8vw,23px)}
+body.present .qlist li{font-size:clamp(16px,1.7vw,22px); padding:13px 18px 13px 54px}
+body.present .cards{gap:13px}
+body.present .alur p{font-size:clamp(15px,1.6vw,21px)}
+body.present .tg b{font-size:clamp(18px,2vw,26px)}
+body.present .tg p{font-size:clamp(15px,1.5vw,20px)}
+body.present .figslide svg{max-height:min(66vh,620px)}
+body.present .mis .q{font-size:clamp(17px,1.8vw,23px)}
+body.present .mis .a{font-size:clamp(15px,1.6vw,21px)}
 body.present .prail,body.present .phead,body.present .ptabs,body.present .assetbar{display:none}
 body.present .deck-bar{position:fixed; left:0; right:0; bottom:0; margin:0; padding:9px 16px;
   background:var(--petak); border:0; border-top:1px solid var(--garis); border-radius:0; box-shadow:none; z-index:70}
+/* halaman selain slide tetap punya jarak baca ketika layar penuh */
+body.present .sim{max-width:1180px; margin:26px auto}
+body.present .sheet,body.present #kz,body.present .score,body.present .ctl,body.present #kz-out{
+  max-width:1060px; margin-left:auto; margin-right:auto; padding-left:var(--gut); padding-right:var(--gut)}
+body.present .sim:first-child,body.present .sheet,body.present #kz{padding-top:22px}
+.pres-h{display:none}
+body.present .pres-h{display:block; max-width:1060px; margin:26px auto 4px;
+  padding:0 var(--gut); font-size:clamp(22px,2.6vw,34px)}
+body.present .qcard .qt{font-size:19px}
+body.present>#app>.shell .main>p.note{display:none}
 
 /* ------------------------------------------------------------------- sim */
 .sim{border:1px solid var(--garis); border-radius:var(--r-lg); background:var(--petak); overflow:hidden; margin-bottom:22px}
@@ -2543,16 +2678,19 @@ ${rec.ts ? 'Terakhir diunduh ' + new Date(rec.ts).toLocaleDateString('id-ID') + 
       case 'cover': return `<div class="cover">
 <div class="ck">Kelas ${T(s.kelas)} · Unit ${s.unit} · Semester ${T(s.sem)}</div>
 <h2>${T(s.t)}</h2>
+<div class="cfield" aria-hidden="true">${Array.from({ length: s.pert }, () => '<i></i>').join('')}</div>
 <div class="cmeta">
   <div><b>${s.jp} JP</b>jam pelajaran</div>
   <div><b>${s.pert}</b>pertemuan</div>
-  <div style="max-width:30ch"><b style="font-size:15px;font-family:var(--f-body);font-weight:700">${T(s.elemen.join(', '))}</b>elemen capaian pembelajaran</div>
+  <div class="celem" style="max-width:34ch">${T(s.elemen.join(', '))}<span>elemen capaian pembelajaran</span></div>
 </div></div>`;
-      case 'pcover': return `<div class="cover pcov">
-<div class="ck">Unit ${s.unit} · ${T(s.judul)}</div>
-<div class="pnum">Pertemuan ${s.ke}<i>dari ${s.dari}</i></div>
-<h3>${T(s.t)}</h3>
-<div class="cmeta"><div><b>${s.jp} JP</b>alokasi waktu pertemuan ini</div></div></div>`;
+      case 'pcover': return `<div class="pcov">
+<div class="pc-no"><b>${s.ke}</b><span>dari ${s.dari} pertemuan</span></div>
+<div class="pc-txt">
+  <div class="ck">Unit ${s.unit} · ${T(s.judul)}</div>
+  <h3>${T(s.t)}</h3>
+  <div class="pc-jp"><b>${s.jp}</b> jam pelajaran</div>
+</div></div>`;
       case 'alur': return `<h2>${T(s.t)}</h2><div class="alur">
 <div><h4>Memahami</h4><p>${T(s.memahami)}</p></div>
 <div><h4>Mengaplikasi</h4><p>${T(s.mengaplikasi)}</p></div>
@@ -2561,10 +2699,11 @@ ${rec.ts ? 'Terakhir diunduh ' + new Date(rec.ts).toLocaleDateString('id-ID') + 
 ${s.sims.map(x => `<div class="tg"><span class="tag">Simulasi</span><b>${T(x.t)}</b><p>${T(x.lead)}</p></div>`).join('')}
 ${s.lkpd.map(x => `<div class="tg"><span class="tag b">LKPD ${T(x.kode)}</span><b>${T(x.judul)}</b><p>${T(x.waktu)}</p></div>`).join('')}
 </div>`;
-      case 'tp': return `<h2>${T(s.t)}</h2><table><tr><th style="width:110px">Kode</th><th>Tujuan pembelajaran</th></tr>
-${s.rows.map(r => `<tr><td class="mono" style="font-family:var(--f-mono);font-size:.9em">${T(r[0])}</td><td>${T(r[1])}</td></tr>`).join('')}</table>`;
-      case 'peta': return `<h2>${T(s.t)}</h2><ul>${s.items.map(x => `<li>${T(x)}</li>`).join('')}</ul>`;
-      case 'konteks': return `<h2>${T(s.t)}</h2><p>${T(s.lead)}</p>
+      case 'tp': return `<h2>${T(s.t)}</h2><div class="cards ${s.rows.length > 5 ? 'c2' : ''}">
+${s.rows.map(r => `<div class="card"><span class="code">${T(r[0])}</span><p>${T(r[1])}</p></div>`).join('')}</div>`;
+      case 'peta': return `<h2>${T(s.t)}</h2><ol class="steps">
+${s.items.map((x, i) => `<li><b>${i + 1}</b><span>${T(x)}</span></li>`).join('')}</ol>`;
+      case 'konteks': return `<h2>${T(s.t)}</h2><p class="lede-s">${T(s.lead)}</p>
 <ul>${s.items.map(x => `<li>${T(x)}</li>`).join('')}</ul>`;
       case 'materi': return `<h2>${T(s.t)}${s.cont ? ' <span style="opacity:.45;font-size:.6em">lanjutan</span>' : ''}</h2>` + s.blocks.map(b => {
         if (b.type === 'p') return `<p>${T(b.text)}</p>`;
@@ -2573,15 +2712,21 @@ ${s.rows.map(r => `<tr><td class="mono" style="font-family:var(--f-mono);font-si
 ${b.rows.map(r => `<tr>${r.map(c => `<td>${T(c)}</td>`).join('')}</tr>`).join('')}</table>`;
       }).join('');
       case 'miskon': return `<h2>${T(s.t)}</h2>${s.rows.map(r => `
-<div class="mis"><div class="q">${T(r[0])}</div><div class="a"><b>Yang benar:</b> ${T(r[1])}</div></div>`).join('')}`;
-      case 'dpl': return `<h2>${T(s.t)}</h2><table><tr><th style="width:190px">Dimensi</th><th>Perilaku yang diharapkan</th></tr>
-${s.rows.map(r => `<tr><td><b>${T(r[0])}</b></td><td>${T(r[1])}</td></tr>`).join('')}</table>`;
-      case 'lintas': return `<h2>${T(s.t)}</h2><table><tr><th style="width:200px">Mata pelajaran</th><th>Bentuk keterpaduan</th></tr>
-${s.rows.map(r => `<tr><td><b>${T(r[0])}</b></td><td>${T(r[1])}</td></tr>`).join('')}</table>`;
-      case 'asesmen': return `<h2>${T(s.t)}</h2><table><tr><th>Bentuk</th><th>Tugas</th><th style="width:72px">Bobot</th></tr>
-${s.sumatif.map(r => `<tr><td><b>${T(r[0])}</b></td><td>${T(r[1])}</td><td>${T(r[2])}</td></tr>`).join('')}</table>
-<div class="callout" style="margin-top:14px"><b>Kriteria ketercapaian.</b> ${T(s.kktp)}</div>`;
-      case 'refleksi': return `<h2>${T(s.t)}</h2><ul>${s.items.map(x => `<li>${T(x)}</li>`).join('')}</ul>`;
+<div class="mis"><div class="q">${T(r[0])}</div><div class="a">${T(r[1])}</div></div>`).join('')}`;
+      case 'dpl': return `<h2>${T(s.t)}</h2><div class="cards c2">
+${s.rows.map(r => `<div class="card"><b>${T(r[0])}</b><p>${T(r[1])}</p></div>`).join('')}</div>`;
+      case 'lintas': return `<h2>${T(s.t)}</h2><div class="cards c2">
+${s.rows.map(r => `<div class="card alt"><b>${T(r[0])}</b><p>${T(r[1])}</p></div>`).join('')}</div>`;
+      case 'asesmen': {
+        const n = s.sumatif.map(r => parseInt(String(r[2]).replace(/\D/g, ''), 10) || 0);
+        const mx = Math.max(1, ...n);
+        return `<h2>${T(s.t)}</h2><div class="bobot">
+${s.sumatif.map((r, i) => `<div class="bb"><div class="bn"><b>${T(r[0])}</b><span>${T(r[2])}</span></div>
+<div class="bl"><i style="width:${Math.round(n[i] / mx * 100)}%"></i></div><p>${T(r[1])}</p></div>`).join('')}</div>
+<div class="callout" style="margin-top:16px"><b>Kriteria ketercapaian.</b> ${T(s.kktp)}</div>`;
+      }
+      case 'refleksi': return `<h2>${T(s.t)}</h2><ol class="qlist">
+${s.items.map(x => `<li>${T(x)}</li>`).join('')}</ol>`;
       case 'figure': {
         const f = FIG[s.fig];
         return f ? `<figure class="figslide">${f.draw()}<figcaption>${T(f.cap)}</figcaption></figure>`
@@ -2733,13 +2878,6 @@ ${[['Pembukaan', s.menitAwal, s.awal], ['Memahami', s.menitMemahami, s.memahami]
       `<a href="#/u/${u.slug}/p/${pi + 1}/${k}${k === 'slide' ? '/0' : ''}" ${k === tab ? 'aria-current="page"' : ''}>${l} <b>${n}</b></a>`).join('')}</nav>`;
   }
 
-  // Di mode presenter, slide terakhir langsung menyambung ke pertemuan berikutnya
-  // supaya tayangan tidak terputus; di luar itu ia menawarkan simulasi atau LKPD.
-  function afterSlide(u, pi) {
-    if (present && pi + 1 < u.pert.length)
-      return { h: `#/u/${u.slug}/p/${pi + 2}/slide/0`, l: 'Pertemuan ' + u.pert[pi + 1].ke };
-    return after(u, pi, 'slide');
-  }
   // langkah berikutnya sesudah bagian yang sedang dibuka
   function after(u, pi, tab) {
     const p = u.pert[pi], b = `#/u/${u.slug}/p/${pi + 1}/`;
@@ -2754,9 +2892,15 @@ ${[['Pembukaan', s.menitAwal, s.awal], ['Memahami', s.menitMemahami, s.memahami]
     const gi = sl[si];
     seen(u.slug, gi);
     const d = P[u.slug] || { s: [] };
-    const nx = si === sl.length - 1 ? afterSlide(u, pi) : null;
+    const nx = si === sl.length - 1 ? after(u, pi, 'slide') : null;
+    const s = u.slides[gi];
+    // pita petak: satu petak untuk tiap slide pertemuan ini, yang sedang dibuka berwarna gabah
+    const rule = `<div class="frule" aria-hidden="true">${sl.map((g, k) =>
+      `<i class="${k === si ? 'now' : k < si ? 'done' : ''}"></i>`).join('')}</div>`;
     return `<div class="stage-wrap">
-<section class="stage" id="stage">${slideHTML(u, u.slides[gi], gi)}<div class="slide-n">${si + 1}/${sl.length}</div></section>
+<section class="stage k-${esc(s.k)}" id="stage">${rule}
+<div class="slide-ctx">Pertemuan ${u.pert[pi].ke} · ${esc(u.pert[pi].topik)}</div>
+<div class="slide-body">${slideHTML(u, s, gi)}</div><div class="slide-n">${si + 1}/${sl.length}</div></section>
 <div class="deck-bar">
   <button class="navbtn" id="d-prev" ${si === 0 && pi === 0 ? 'disabled' : ''}>${I.prev} Sebelum</button>
   <div class="strip" id="d-strip">${sl.map((g, k) =>
@@ -2772,7 +2916,8 @@ ${[['Pembukaan', s.menitAwal, s.awal], ['Memahami', s.menitMemahami, s.memahami]
     return `<div class="deck-bar foot-bar">
 <a class="navbtn" href="#/u/${u.slug}/p/${pi + 1}/slide/0">${I.prev} Kembali ke slide</a>
 <span style="flex:1"></span>
-<a class="navbtn solid" href="${nx.h}">${nx.l} ${I.next}</a></div>`;
+<a class="navbtn solid" href="${nx.h}">${nx.l} ${I.next}</a>
+<button class="navbtn" id="d-full2" title="Mode presenter (F)">${I.full}</button></div>`;
   }
   function simPage(u, pi) {
     const ids = u.pert[pi].sims;
@@ -2803,7 +2948,7 @@ ${l.tabel.rows.map(r => `<tr>${r.map(c => `<td>${c ? esc(c) : '<span class="fill
   function kuisPage(u) {
     if (!u.quiz.length) return '<p class="note">Unit ini belum memiliki bank soal.</p>';
     const prev = (P[u.slug] || {}).kuis;
-    return `${prev ? `<div class="score"><div class="n">${prev.n}</div><div><p><b>Hasil terakhirmu:</b> ${prev.b} benar dari ${prev.t} soal. ${prev.n >= 75 ? 'Sudah melampaui kriteria ketercapaian (75).' : 'Belum mencapai kriteria ketercapaian (75). Ulangi bagian yang masih keliru.'}</p></div></div>` : ''}
+    return `<h2 class="pres-h">Kuis · ${esc(u.judul)}</h2>${prev ? `<div class="score"><div class="n">${prev.n}</div><div><p><b>Hasil terakhirmu:</b> ${prev.b} benar dari ${prev.t} soal. ${prev.n >= 75 ? 'Sudah melampaui kriteria ketercapaian (75).' : 'Belum mencapai kriteria ketercapaian (75). Ulangi bagian yang masih keliru.'}</p></div></div>` : ''}
 <div id="kz">${u.quiz.map((q, i) => `
 <div class="qcard" data-q="${i}">
   <div class="qn"><span>Soal ${i + 1}</span><span class="chip">${esc(q.tp)}</span><span class="chip">${esc(q.lvl)}</span><span class="chip">Semester ${esc(q.sem)}</span></div>
@@ -2813,7 +2958,11 @@ ${l.tabel.rows.map(r => `<tr>${r.map(c => `<td>${c ? esc(c) : '<span class="fill
   <div data-fb></div>
 </div>`).join('')}</div>
 <div class="ctl" style="margin-top:14px"><button class="btn" id="kz-go">Periksa jawaban</button><button class="btn ghost" id="kz-reset">Kosongkan</button></div>
-<div id="kz-out" style="margin-top:14px"></div>`;
+<div id="kz-out" style="margin-top:14px"></div>
+<div class="deck-bar foot-bar">
+<a class="navbtn" href="#/u/${u.slug}/p/${u.pert.length}/slide/0">${I.prev} Kembali ke pertemuan ${u.pert[u.pert.length - 1].ke}</a>
+<span style="flex:1"></span>
+<button class="navbtn" id="d-full2" title="Mode presenter (F)">${I.full}</button></div>`;
   }
   function modulPage(u) {
     const rows = (t, r) => `<table>${t ? `<tr>${t.map(h => `<th>${esc(h)}</th>`).join('')}</tr>` : ''}${r.map(x => `<tr>${x.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table>`;
@@ -2947,8 +3096,8 @@ ${['X', 'XI', 'XII'].map(k => { const us = KUR.units.filter(u => u.kelas === k);
     const p = parse();
     // Mode presenter bertahan selama masih berpindah antar slide; begitu pindah ke
     // kuis, modul, atau halaman lain, mode itu dilepas berikut layar penuhnya.
-    const diSlide = p[0] === 'u' && p[2] === 'p' && (!p[4] || p[4] === 'slide');
-    if (present && !diSlide) setPresent(false);
+    const diUnit = p[0] === 'u' && !!byId(p[1]) && p[2] !== 'modul';
+    if (present && !diUnit) setPresent(false);
     document.body.classList.toggle('present', present);
     let html = topbar();
     if (!p.length) html += home();
@@ -3010,11 +3159,12 @@ ${['X', 'XI', 'XII'].map(k => { const us = KUR.units.filter(u => u.kelas === k);
         if (si > 0) goto(si - 1);
         else if (pi > 0) location.hash = `#/u/${u.slug}/p/${pi}/slide/${u.pert[pi - 1].sl.length - 1}`;
       };
-      $('#d-next').onclick = () => { if (si < sl.length - 1) goto(si + 1); else location.hash = afterSlide(u, pi).h; };
+      $('#d-next').onclick = () => { if (si < sl.length - 1) goto(si + 1); else location.hash = after(u, pi, 'slide').h; };
       $$('button[data-k]', strip).forEach(b => b.onclick = () => goto(+b.dataset.k));
       $('#d-full').onclick = toggleFull;
       hydratePhotos(app);
     }
+    const f2 = $('#d-full2'); if (f2) f2.onclick = toggleFull;
     // sims
     $$('[data-sim]').forEach(el => {
       const s = SIM[el.dataset.sim];
@@ -3081,6 +3231,11 @@ ${['X', 'XI', 'XII'].map(k => { const us = KUR.units.filter(u => u.kelas === k);
   document.addEventListener('keydown', e => {
     const t = e.target.tagName;
     if (t === 'INPUT' || t === 'TEXTAREA' || t === 'SELECT') return;
+    const rp = parse();
+    if (rp[0] === 'u' && byId(rp[1]) && rp[2] !== 'modul') {
+      if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFull(); return; }
+      if (e.key === 'Escape' && present) { toggleFull(); return; }
+    }
     const pos = deckPos(); if (!pos) return;
     const u = pos.u, pi = pos.pi, si = pos.si, n = pos.sl.length;
     const go = k => { location.hash = `#/u/${u.slug}/p/${pi + 1}/slide/${k}`; };
@@ -3094,8 +3249,6 @@ ${['X', 'XI', 'XII'].map(k => { const us = KUR.units.filter(u => u.kelas === k);
       if (si > 0) go(si - 1);
       else if (pi > 0) location.hash = `#/u/${u.slug}/p/${pi}/slide/${u.pert[pi - 1].sl.length - 1}`;
     }
-    if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFull(); }
-    if (e.key === 'Escape' && present) toggleFull();
   });
   window.addEventListener('hashchange', render);
 

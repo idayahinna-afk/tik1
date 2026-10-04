@@ -36,6 +36,15 @@ Di dalam satu pertemuan tersedia:
 Tombol lanjut menuntun urutannya sendiri: slide terakhir membuka simulasi, simulasi
 membuka LKPD, LKPD membuka pertemuan berikutnya, dan pertemuan terakhir membuka kuis.
 
+## Mode presenter
+
+Tombol layar penuh atau tombol `F` membuka mode presenter: bilah atas, daftar unit,
+dan kepala pertemuan disembunyikan, slide memenuhi layar, dan hanya kendali slide yang
+tersisa di dasar layar. Mode ini **bertahan di seluruh pertemuan** — berpindah slide,
+membuka simulasi, membuka LKPD, menyeberang ke pertemuan berikutnya, sampai masuk kuis,
+semuanya tetap penuh. Mode baru dilepas ketika ditekan `Esc`, ditekan tombolnya lagi,
+atau ketika berpindah ke tab Modul ajar.
+
 Di tingkat unit tetap tersedia tab **Kuis** dan **Modul ajar** (identifikasi, desain
 pembelajaran, pengalaman belajar, asesmen, rubrik, refleksi).
 
@@ -96,6 +105,10 @@ Penyimpanan dapat dilihat, diunduh ulang, atau dihapus lewat tombol unduh di kan
 - Situs tidak memuat pelacak, iklan, maupun layanan pihak ketiga selain
   pengambilan gambar sekali dari Wikimedia Commons.
 - Tema terang dan gelap mengikuti pengaturan perangkat dan dapat diubah manual.
+- Slide pembuka unit dan pembuka pertemuan memakai bidang gelap dengan angka pertemuan
+  berukuran besar; slide isi memakai kartu dan daftar bernomor, bukan tabel, agar
+  terbaca dari bangku belakang. Tepi atas tiap slide memuat pita petak yang menandai
+  posisi slide di dalam pertemuan.
 
 ## Sumber materi
 
