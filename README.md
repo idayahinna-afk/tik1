@@ -1,82 +1,87 @@
-# Slide & Simulasi Informatika — SMA Negeri 11 Pinrang
+# Petak — Media Belajar Informatika SMA Negeri 11 Pinrang
 
-Media pembelajaran berbasis web berisi **slide pertemuan** dan **simulasi interaktif** untuk
-Informatika Kelas X (Fase E), XI, dan XII (Fase F). Setiap pertemuan memiliki minimal satu
-salindia simulasi (ditandai 🧪) yang dapat langsung dicoba murid di tengah presentasi.
-
-Penyusun: **Mutmainnah Syam, S.Pd., M.Pd.** — NIP 19930321 202421 2 034 · T.P. 2026/2027
-Acuan: Capaian Pembelajaran BSKAP 046/H/KR/2025 · pendekatan Pembelajaran Mendalam.
+Media pembelajaran berbasis web untuk mata pelajaran Informatika kelas X, XI, dan XII.
+Seluruh isinya diturunkan langsung dari perangkat ajar berbasis Pembelajaran Mendalam
+yang disusun oleh **Mutmainnah Syam, S.Pd., M.Pd.** (NIP 199303212024212034),
+SMA Negeri 11 Pinrang, Tahun Pelajaran 2026/2027.
 
 ## Isi
 
-| Berkas | Keterangan |
+| Bagian | Jumlah |
 |---|---|
-| `index.html` | Aplikasi: 20 pertemuan, 17 simulasi interaktif, kuis formatif di setiap dek |
-| `Slide Informatika Kelas X - SMAN 11 Pinrang.pptx` | 143 slide siap tayang / siap diimpor ke Canva |
-| `Slide Informatika Kelas XI - SMAN 11 Pinrang.pptx` | 104 slide |
-| `Slide Informatika Kelas XII - SMAN 11 Pinrang.pptx` | 103 slide |
+| Unit pembelajaran | 15 (4 di kelas X, 5 di kelas XI, 6 di kelas XII) |
+| Slide | 307 |
+| Simulasi interaktif | 20 |
+| LKPD lengkap dengan tabel kerja | 44 |
+| Soal pilihan ganda berkunci | 115 |
+| Diagram SVG | 35 |
 
-## Alur setiap dek pertemuan
+Setiap unit punya lima tab: **Slide**, **Simulasi**, **LKPD**, **Kuis**, dan **Modul ajar**
+(identifikasi, desain pembelajaran, pengalaman belajar, asesmen, rubrik, refleksi).
 
-**Pembuka** — sampul dan sapaan hangat · tujuan pembelajaran · apersepsi (kaitan dengan pertemuan
-lalu) · pertanyaan pemantik.
-**Isi** — poin kunci berupa kata kunci singkat, visual pendukung, salindia simulasi interaktif (🧪),
-dan salindia **cek pemahaman** yang disisipkan setiap selesai satu sub-bab.
-**Aktivitas & penutup** — instruksi kerja kelompok (langkah bernomor, alokasi waktu, produk yang
-dikumpulkan) · kuis interaktif 3 soal dengan umpan balik instan · refleksi terbuka · tindak lanjut,
-materi pertemuan berikutnya, dan ucapan terima kasih.
+## Cara memasang di GitHub Pages
 
-Pada berkas `.pptx`, kunci jawaban kuis dan catatan guru tersimpan di bagian **Speaker Notes**.
+1. Buat repositori baru di GitHub, misalnya `informatika-sman11pinrang`.
+2. Unggah berkas di folder ini ke repositori tersebut (cukup seret dan lepas
+   lewat tombol **Add file → Upload files**).
+3. Buka **Settings → Pages**.
+4. Pada bagian *Build and deployment*, pilih **Deploy from a branch**,
+   lalu pilih branch `main` dan folder `/ (root)`. Simpan.
+5. Tunggu satu sampai dua menit. Alamatnya akan muncul di halaman yang sama,
+   berbentuk `https://namaakun.github.io/informatika-sman11pinrang/`.
 
-## Menerbitkan di GitHub Pages
+Berkas `index.html` berdiri sendiri. Jika hanya berkas itu yang diunggah,
+situs tetap berjalan penuh.
 
-1. Buat repositori baru, misalnya `informatika-sman11pinrang`.
-2. **Add file → Upload files**, unggah `index.html` dan ketiga berkas `.pptx`, lalu commit.
-3. **Settings → Pages** → Source: *Deploy from a branch* → branch `main`, folder `/ (root)` → Save.
-4. Buka tautan yang muncul, misalnya `https://namapengguna.github.io/informatika-sman11pinrang/`.
+## Berkas
 
-Tombol "Unduh seluruh slide" di halaman kelas mengarah ke berkas `.pptx` di repositori yang sama,
-jadi pastikan berkas tersebut ikut diunggah.
+| Berkas | Wajib | Keterangan |
+|---|---|---|
+| `index.html` | ya | Seluruh situs: slide, simulasi, LKPD, kuis, modul ajar, gaya, dan data |
+| `sw.js` | tidak | Membuat halaman tetap terbuka penuh walau perangkat sama sekali tanpa internet |
+| `manifest.webmanifest` | tidak | Agar bisa dipasang sebagai aplikasi di layar utama ponsel |
+| `icon.svg` | tidak | Ikon aplikasi |
+| `README.md` | tidak | Berkas ini |
 
-## Memakai Canva
+## Gambar dan penyimpanan permanen
 
-Ada dua cara memadukan media ini dengan Canva:
+Saat pertama dibuka, situs menawarkan **Unduh sekarang** di pojok kanan bawah.
+Sekali ditekan:
 
-**1. Percantik slide di Canva.** Buka Canva → *Buat desain* → *Unggah* → pilih berkas `.pptx`.
-Seluruh slide masuk sebagai desain yang dapat diubah warna, font, dan elemennya.
+- gambar dicari di Wikimedia Commons, lalu **disimpan permanen** sebagai blob di
+  IndexedDB peramban, lengkap dengan nama pembuat dan lisensinya;
+- berkas huruf (Fraunces, Plus Jakarta Sans, IBM Plex Mono) ikut disimpan dan
+  didaftarkan ulang lewat `FontFace` pada pembukaan berikutnya.
 
-**2. Tempelkan desain Canva ke dalam aplikasi.** Di Canva: *Bagikan → Lainnya → Sematkan*, salin
-tautan `https://www.canva.com/design/…/view?embed`. Buka menu **Pengaturan & Canva** pada aplikasi,
-tempelkan tautan pada baris pertemuan yang sesuai. Slide Canva akan muncul sebagai salindia tambahan
-di awal dek pertemuan tersebut (memerlukan internet saat ditayangkan).
+Setelah itu **tidak ada unduhan ulang sama sekali**. Pembukaan berikutnya mengambil
+gambar dari penyimpanan internal, termasuk ketika perangkat sepenuhnya tanpa internet.
+Seluruh diagram digambar sebagai SVG oleh halaman itu sendiri, jadi tidak pernah
+bergantung pada jaringan.
 
-## Mode presentasi
+Penyimpanan dapat dilihat, diunduh ulang, atau dihapus lewat tombol unduh di kanan atas.
+
+## Pintasan papan ketik
 
 | Tombol | Fungsi |
 |---|---|
-| `←` `→` | Berpindah salindia |
-| `F` | Masuk/keluar mode presentasi layar penuh |
-| `Esc` | Keluar mode presentasi |
+| `←` `→` | Pindah slide |
+| `Spasi` | Slide berikutnya |
+| `F` | Mode presenter layar penuh |
+| `Esc` | Keluar dari mode presenter |
 
-Tombol **Unduh slide (PDF)** pada tiap pertemuan membuka jendela cetak; pilih *Simpan sebagai PDF*.
+## Catatan
 
-## Daftar simulasi (17)
+- Kemajuan belajar (slide yang sudah dibuka dan hasil kuis) disimpan di
+  `localStorage` masing-masing perangkat. Tidak ada data yang dikirim ke mana pun.
+- Situs tidak memuat pelacak, iklan, maupun layanan pihak ketiga selain
+  pengambilan gambar sekali dari Wikimedia Commons.
+- Tema terang dan gelap mengikuti pengaturan perangkat dan dapat diubah manual.
 
-Pengurutan · Pencarian berurutan vs biner · Tumpukan dan antrean · Siklus Von Neumann ·
-Konversi biner dan ASCII · Penelusuran pseudocode · Analisis data mini · Lembar kerja dan atribusi
-lisensi · Latihan periksa fakta · Jaringan dan troubleshooting · Daur hidup produk digital ·
-Penelusuran graf BFS/DFS · Brute force vs greedy · Keamanan kata sandi dan 2FA · Tinjauan kualitas
-kode · Perancang spesifikasi komputer · Perencana projek akhir.
+## Sumber materi
 
-## Gambar dan mode luring
-
-Gambar pendukung diambil sekali dari Wikimedia Commons (lisensi bebas) saat aplikasi pertama dibuka,
-lalu disimpan permanen di IndexedDB peramban. Pembukaan berikutnya tidak mengunduh ulang dan tetap
-berjalan tanpa internet; bila pengambilan gagal, dipakai ilustrasi SVG bawaan. Pengaturannya ada di
-menu **Pengaturan & Canva**.
-
-## Menyesuaikan isi
-
-Materi berada pada `const MODULES = [...]` di dalam `index.html`. Setiap salindia memuat
-`k` (label), `t` (judul), `b` (butir isi), `img` (kode gambar), dan `sim` (kode simulasi —
-menyisipkan salindia simulasi tepat setelahnya).
+1. Buku Panduan Guru dan Buku Siswa Informatika SMA/MA Kelas X, XI, dan XII.
+   Pusat Perbukuan, Badan Standar, Kurikulum, dan Asesmen Pendidikan,
+   Kementerian Pendidikan.
+2. Permendikdasmen Nomor 10 Tahun 2025 tentang Standar Kompetensi Lulusan.
+3. Permendikdasmen Nomor 13 Tahun 2025 tentang Standar Proses.
+4. Keputusan Kepala BSKAP Nomor 046/H/KR/2025 tentang Capaian Pembelajaran.
