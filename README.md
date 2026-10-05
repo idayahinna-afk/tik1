@@ -11,8 +11,8 @@ SMA Negeri 11 Pinrang, Tahun Pelajaran 2026/2027.
 |---|---|
 | Unit pembelajaran | 15 (4 di kelas X, 5 di kelas XI, 6 di kelas XII) |
 | Pertemuan | 104 |
-| Slide | 586 |
-| Simulasi interaktif | 20 |
+| Slide | 1.259 |
+| Simulasi dan aktivitas interaktif | 124 (satu atau lebih di setiap pertemuan) |
 | LKPD lengkap dengan tabel kerja | 44 |
 | Soal pilihan ganda berkunci | 115 |
 | Diagram SVG | 37 |
@@ -22,6 +22,38 @@ SMA Negeri 11 Pinrang, Tahun Pelajaran 2026/2027.
 Isi setiap unit dipecah menurut pertemuannya, mengikuti peta pertemuan pada modul
 ajar. Membuka sebuah unit berarti membuka rel pertemuan: satu petak untuk tiap
 pertemuan, lengkap dengan topik, alokasi JP, jumlah slide, simulasi, dan nomor LKPD-nya.
+
+Setiap pertemuan punya materi ajarnya sendiri dan sekurang-kurangnya satu aktivitas
+interaktif. Urutan slide tiap pertemuan disusun untuk mengajar, bukan sekadar
+menampilkan isi:
+
+1. **Judul pertemuan** dan **alur** tiga gerak Pembelajaran Mendalam.
+2. **Pertanyaan pembuka** — satu persoalan nyata berkonteks Pinrang yang memancing
+   rasa ingin tahu sebelum materi disampaikan.
+3. **Gagasan inti** — satu kalimat pokok disertai tiga sampai empat penjelas.
+4. **Contoh bertahap** — kasus nyata yang dikerjakan langkah demi langkah, lengkap
+   dengan hasil tiap langkah dan satu simpulan.
+5. **Bahan bacaan** dari modul ajar.
+6. **Sering keliru** — satu miskonsepsi yang memang sering muncul, beserta koreksinya.
+7. **Periksa pemahaman** — dua sampai tiga pertanyaan dengan jawaban yang dibuka
+   satu per satu saat guru menanyakannya di kelas.
+8. **Yang dikerjakan pertemuan ini** — aktivitas dan LKPD-nya.
+9. **Tiga hal yang dibawa pulang** — rangkuman.
+
+## Delapan bentuk aktivitas
+
+Setiap pertemuan memperoleh satu aktivitas yang dipilih sesuai topiknya:
+
+| Bentuk | Yang dilatih |
+|---|---|
+| Susun urutan | Mengurutkan langkah kerja dan memahami ketergantungan antarlangkah |
+| Golongkan | Membedakan dan menggolongkan dengan alasan |
+| Pasangkan | Menghubungkan istilah dengan maknanya |
+| Telusuri langkah | Mengikuti jalannya program atau proses, nilai demi nilai |
+| Tebak lalu periksa | Memprediksi lebih dulu, lalu membandingkannya dengan penjelasan |
+| Rakit | Menyusun kueri, pseudokode, atau pertanyaan dari potongan |
+| Geser dan amati | Melihat akibat perubahan angka pada hasil, secara langsung |
+| Temukan keliru | Menemukan kekeliruan pada kode, data, atau prosedur |
 
 Di dalam satu pertemuan tersedia:
 
