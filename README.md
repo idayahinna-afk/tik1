@@ -1,8 +1,9 @@
 # Petak — Media Belajar Informatika SMA Negeri 11 Pinrang
 
 Media pembelajaran berbasis web untuk mata pelajaran Informatika kelas X, XI, dan XII.
-Seluruh isinya diturunkan langsung dari perangkat ajar berbasis Pembelajaran Mendalam
-yang disusun oleh **Mutmainnah Syam, S.Pd., M.Pd.** (NIP 199303212024212034),
+Isinya bertumpu pada **Buku Siswa Informatika Kelas X, XI, dan XII** dan dirangkai
+mengikuti perangkat ajar berbasis Pembelajaran Mendalam yang disusun oleh
+**Mutmainnah Syam, S.Pd., M.Pd.** (NIP 199303212024212034),
 SMA Negeri 11 Pinrang, Tahun Pelajaran 2026/2027.
 
 ## Isi
@@ -11,11 +12,31 @@ SMA Negeri 11 Pinrang, Tahun Pelajaran 2026/2027.
 |---|---|
 | Unit pembelajaran | 15 (4 di kelas X, 5 di kelas XI, 6 di kelas XII) |
 | Pertemuan | 104 |
-| Slide | 1.259 |
+| Slide | 1.778 |
+| Bahan bacaan buku | 2.469 paragraf, tersedia di seluruh 104 pertemuan |
 | Simulasi dan aktivitas interaktif | 124 (satu atau lebih di setiap pertemuan) |
-| LKPD lengkap dengan tabel kerja | 44 |
+| LKPD | 208, di antaranya 164 aktivitas asli buku siswa |
 | Soal pilihan ganda berkunci | 115 |
 | Diagram SVG | 37 |
+
+## Dari buku pegangan siswa
+
+Materi tiap pertemuan diambil langsung dari buku siswa, bukan ringkasan ulang:
+
+- **Bacaan.** Tiap pertemuan punya tab **Bacaan** berisi teks buku apa adanya,
+  dipotong mengikuti urutan subbab dan dibagi rata ke pertemuan-pertemuan unit itu.
+  Tiap bagian mencantumkan judul subbab dan nomor halaman aslinya.
+- **Slide sorotan.** Paling banyak lima slide tiap pertemuan mengutip paragraf
+  kunci buku, lengkap dengan baris sumber di kakinya.
+- **LKPD.** Seluruh aktivitas berkode pada buku siswa (`10.1-01-P`, `ID-K11-04`,
+  `IF-K12-01`, dan seterusnya) menjadi LKPD tersendiri dengan judul, jenis kegiatan,
+  langkah kerja, dan nomor halaman aslinya. LKPD rancangan guru tetap ada sebagai
+  pendamping dan ditandai sumbernya.
+
+Berkas buku siswa kelas XII berupa hasil pindai tanpa lapisan teks. Teksnya
+dipulihkan dengan pengenalan karakter berbahasa Indonesia, lalu dirapikan:
+judul subbab dicocokkan dengan daftar isi, bagian akhir buku (glosarium, indeks)
+dikeluarkan, dan spasi yang hilang saat pemindaian disambung kembali.
 
 ## Susunan per pertemuan
 
@@ -33,7 +54,8 @@ menampilkan isi:
 3. **Gagasan inti** — satu kalimat pokok disertai tiga sampai empat penjelas.
 4. **Contoh bertahap** — kasus nyata yang dikerjakan langkah demi langkah, lengkap
    dengan hasil tiap langkah dan satu simpulan.
-5. **Bahan bacaan** dari modul ajar.
+5. **Sorotan buku siswa** — paragraf kunci dari subbab yang dibahas pertemuan itu,
+   disertai nomor halamannya. Teks utuhnya ada di tab **Bacaan**.
 6. **Sering keliru** — satu miskonsepsi yang memang sering muncul, beserta koreksinya.
 7. **Periksa pemahaman** — dua sampai tiga pertanyaan dengan jawaban yang dibuka
    satu per satu saat guru menanyakannya di kelas.
@@ -62,11 +84,13 @@ Di dalam satu pertemuan tersedia:
   menitnya bila pertemuan tersebut punya skenario terperinci;
 - **Slide** khusus pertemuan itu, dibuka dengan slide judul pertemuan dan slide alur,
   ditutup dengan slide tugas;
+- **Bacaan** berisi teks buku siswa untuk pertemuan itu;
 - **Simulasi** yang dipakai pada pertemuan itu saja;
 - **LKPD** yang dikerjakan pada pertemuan itu saja.
 
-Tombol lanjut menuntun urutannya sendiri: slide terakhir membuka simulasi, simulasi
-membuka LKPD, LKPD membuka pertemuan berikutnya, dan pertemuan terakhir membuka kuis.
+Tombol lanjut menuntun urutannya sendiri: slide terakhir membuka bacaan, bacaan
+membuka simulasi, simulasi membuka LKPD, LKPD membuka pertemuan berikutnya, dan
+pertemuan terakhir membuka kuis.
 
 ## Mode presenter
 
@@ -144,9 +168,11 @@ Penyimpanan dapat dilihat, diunduh ulang, atau dihapus lewat tombol unduh di kan
 
 ## Sumber materi
 
-1. Buku Panduan Guru dan Buku Siswa Informatika SMA/MA Kelas X, XI, dan XII.
-   Pusat Perbukuan, Badan Standar, Kurikulum, dan Asesmen Pendidikan,
-   Kementerian Pendidikan.
+1. Buku Siswa Informatika SMA/MA/SMK/MAK Kelas X (Edisi Revisi); Buku Siswa
+   Informatika SMA/MA Kelas XI (Edisi Revisi); Buku Siswa Informatika SMA/MA
+   Kelas XII; serta Buku Panduan Guru Informatika SMA Kelas XII. Pusat Perbukuan,
+   Badan Standar, Kurikulum, dan Asesmen Pendidikan, Kementerian Pendidikan.
+   Bacaan, slide sorotan, dan LKPD berkode dikutip dari buku-buku ini.
 2. Permendikdasmen Nomor 10 Tahun 2025 tentang Standar Kompetensi Lulusan.
 3. Permendikdasmen Nomor 13 Tahun 2025 tentang Standar Proses.
 4. Keputusan Kepala BSKAP Nomor 046/H/KR/2025 tentang Capaian Pembelajaran.
